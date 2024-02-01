@@ -1,0 +1,36 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<hr>
+<h3>Create Order</h3>
+
+ <!-- WHEN FORM IS CREATED NORMALLY --without utilizing django-forms -->
+<form method="POST" action="">
+    {% csrf_token %}
+    <select name="customer" id="customer">  
+        <option value selected>Customer</option>
+        {% for customer in customers %}
+        <option value="{{customer.id}}">{{customer.name}}</option>
+        {% endfor %}
+    </select>
+
+    <select name="product" id="product">
+        <option value selected>Product</option>
+        {% for product in products %}
+        <option value="{{product.id}}">{{product.name}}</option>
+        {% endfor %}
+    </select>
+    
+    <select name="status" id="status">
+        <option value selected>Status</option>
+        {% for value,status_text in status_types %}
+        <option value="{{value}}">{{status_text}}</option>
+        {% endfor %}
+    </select>
+
+
+    <input type="submit" value="Create Order">
+</form>
+
+
+{% endblock %}

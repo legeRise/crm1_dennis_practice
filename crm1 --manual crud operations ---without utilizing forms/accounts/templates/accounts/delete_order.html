@@ -1,0 +1,13 @@
+{% extends 'accounts/main.html' %}
+
+{% block content%}
+<form action="" method="post">
+    {% csrf_token %}
+   
+    <p>{{order.customer}}! Are you Sure you want to delete "{{order.product.name}}" from your orders?</p>
+    <a href="{% url 'dashboard' %}">Cancel</a>
+    <input type="submit" value="Delete Order">
+
+</form>
+
+{% endblock %}
