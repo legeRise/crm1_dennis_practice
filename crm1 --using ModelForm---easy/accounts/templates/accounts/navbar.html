@@ -1,0 +1,35 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <img src="{% static 'images/logo.png'%}">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        {% if request.user.is_staff %}
+        <li class="nav-item active">
+          <a class="nav-link active" href="{% url 'dashboard' %}">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'products' %}">Products</a>
+        </li>
+        {% else %}
+
+        <li class="nav-item active">
+          <a class="nav-link active" href="{% url 'UserDashboard' %}">User Dashboard</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'customer' request.user.customer.id %}" >Profile</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'accountSettings' %}" >Settings</a>
+        </li>
+      
+        {% endif %}
+      </ul>
+    </div>
+    <span style="color:white; margin-right: 5px;">Hello, {{request.user}}</span>
+    <span style="color:white; margin-right: 5px;"><a style="color:white; text-decoration:none;" href="{% url 'logout' %}">Logout</a></span>
+  </nav>

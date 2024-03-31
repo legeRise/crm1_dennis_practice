@@ -1,0 +1,43 @@
+{% extends 'accounts/main.html' %}
+
+
+{% block content %}
+
+{% for message in messages %}
+<div class="success-messages">{{message}}</div>
+{% endfor %}
+
+{% include 'accounts/status.html' %}
+<br>
+<div class="row">
+
+	<div class="col-md">
+		<h5>LAST 5 ORDERS</h5>
+		<hr>
+		<div class="card card-body">
+			<table class="table table-sm">
+
+				<tr>
+					<th>Product</th>
+					<th>Date Ordered</th>
+					<th>Status</th>
+				</tr>
+
+			    {% for order in last_5_orders %}
+				<tr>
+					<td>{{order.product}}</td>
+					<td>{{order.date_created}}</td>
+					<td>{{order.status}}</td>
+				</tr>
+				{% endfor %}
+
+		
+			</table>
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}
+

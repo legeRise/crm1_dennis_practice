@@ -1,0 +1,23 @@
+{% extends 'accounts/main.html' %}
+
+{% block content %}
+<hr>
+<h3>Create Order</h3>
+
+ <!-- Used ModelForm  -->
+ <p id="count">count</p>
+<form method="POST" action="">
+    {% csrf_token %}
+    {% for field in myform %}
+    {{field.label}}
+    {{field}}
+    {% endfor%}
+    <input type="submit" value="Create Order">
+</form>
+
+<script>
+    count =1
+
+</script>
+
+{% endblock %}
